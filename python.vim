@@ -39,6 +39,12 @@ elseif exists("b:current_syntax")
 endif
 
 setlocal foldmethod=syntax
+func! Foldtext_python()
+  let title = getline(v:foldstart)
+  let num = v:foldend - v:foldstart + 1
+  return title.v:folddashes.'['.num.']'
+endfunc
+setlocal foldtext=Foldtext_python()
 
 syn keyword pythonStatement	break continue del
 syn keyword pythonStatement	except exec finally
