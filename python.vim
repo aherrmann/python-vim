@@ -55,8 +55,11 @@ syn keyword pythonStatement	lambda yield
 
 syn match   pythonDefStatement	/^\s*\%(def\|class\)/
   \ nextgroup=pythonFunction skipwhite
-syn region  pythonFunctionFold	start="^\z(\s*\)\%(def\|class\)\>"
-  \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!." fold transparent
+syn region pythonFunctionFold  start="^\z(\s*\)\%(def\|class\)\>"
+      \ keepend
+      \ end="\S\n\%(\s*\n\)\{,2}\ze\%(\s*\n\)*\%(\z1\s\)\@!."
+      \ end="\%(\_^\s*\n\)*\%$"
+      \ fold transparent
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" contained
 
 syn match   pythonComment /#\%(.\%({{{\|}}}\)\@!\)*$/
