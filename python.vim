@@ -62,7 +62,7 @@ syn region pythonFunctionFold  start="^\z(\s*\)\%(def\|class\)\>"
       \ fold transparent
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" contained
 
-syn match   pythonComment /#\%(.\%({{{\|}}}\)\@!\)*$/
+syn match   pythonComment /#.*$/
   \ contains=pythonTodo,@Spell
 syn region  pythonFold matchgroup=pythonComment
   \ start='#.*{{{.*$' end='#.*}}}.*$' fold transparent
